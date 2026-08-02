@@ -124,10 +124,8 @@ source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 # Zsh Functions
 ################################################################################
 
-fpath=($CONFIG_PATH/functions $fpath)
-
-for func in $CONFIG_PATH/functions/*(N:.); do
-    autoload -Uz "$func:t"
+for file in $CONFIG_PATH/zsh/functions/*.zsh; do
+    source "$file"
 done
 
 ################################################################################
