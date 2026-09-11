@@ -150,6 +150,18 @@ alias python='python3'
 alias pip='pip3'
 
 ################################################################################
+# PostgreSQL
+################################################################################
+
+# libpq is keg-only (conflicts with a full postgresql install), so its client
+# tools -- psql, pg_dump, pg_restore -- need to be added to PATH explicitly.
+if [[ -d $HOMEBREW_PREFIX/opt/libpq/bin ]]; then
+    export PATH="$HOMEBREW_PREFIX/opt/libpq/bin:$PATH"
+    export LDFLAGS="-L$HOMEBREW_PREFIX/opt/libpq/lib${LDFLAGS:+ $LDFLAGS}"
+    export CPPFLAGS="-I$HOMEBREW_PREFIX/opt/libpq/include${CPPFLAGS:+ $CPPFLAGS}"
+fi
+
+################################################################################
 # Google Cloud SDK
 ################################################################################
 
@@ -175,3 +187,5 @@ fi
 
 export BUN_INSTALL="$HOME/.bun"
 export PATH=$BUN_INSTALL/bin:$PATH
+
+export PATH="$HOME/.local/bin:$PATH"
