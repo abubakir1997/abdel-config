@@ -1,0 +1,9 @@
+#!/bin/zsh
+
+if [[ -z "$1" ]]; then
+  echo "Usage: find-port <port-number>"
+  return 1
+fi
+
+local port=$1
+lsof -i :$port

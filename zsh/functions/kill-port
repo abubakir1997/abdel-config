@@ -1,0 +1,16 @@
+#!/bin/zsh
+# Kill a process running on a specific port
+if [[ -z "$1" ]]; then
+  echo "Usage: kill-port <port-number>"
+  return 1
+fi
+
+local port=$1
+local pid=$(lsof -t -i :$port)
+
+if [[ -z "$pid" ]]; then
+  echo "No process found running on port $port"
+  return 1
+fi
+
+kill -9 $pid

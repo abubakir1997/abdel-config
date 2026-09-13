@@ -124,9 +124,7 @@ source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 # Zsh Functions
 ################################################################################
 
-for file in $CONFIG_PATH/zsh/functions/*.zsh; do
-    source "$file"
-done
+export PATH=$CONFIG_PATH/zsh/functions:$PATH
 
 ################################################################################
 # Java
